@@ -5,15 +5,34 @@ namespace Neuralnetwork;
 class Neuron 
 {
     protected  $listOfWeightIn    = array();
-	protected  $listOfWeightOut   = array();
 	
+	protected  $options = array(
+        'inNum'  => 2,
+        
+    );
+    
+    function __construct($options = array())
+    {
+        foreach ( array_keys($this->options) as $optionKey  ){
+            if(isset($options[$optionKey])) $this->options[$optionKey] = $options[$optionKey];
+        }
+        $this->initNeuron();
+    }
+    
+    
+    
     /**
      * return float
      */
-	public  initNeuron()
+	public function  initNeuron()
     {
-	
-		return $this->Random();
+        $listOfWeightIn = array();
+         
+        for($i=0; $i < $this->options['inNum']; $i++){
+            $listOfWeightIn[] = $this->Random();
+        }
+		
+        $this->setListOfWeightIn($listOfWeightIn);
 	}
 
 	public function  getListOfWeightIn() 
@@ -26,15 +45,6 @@ class Neuron
 		$this->listOfWeightIn = $listOfWeightIn;
 	}
 
-	public function getListOfWeightOut()
-    {
-		return $listOfWeightOut;
-	}
-
-	public function setListOfWeightOut($listOfWeightOut) 
-    {
-		$this->listOfWeightOut = $listOfWeightOut;
-	}
 	
     
     protected function Random($min = 0, $max = 1){
