@@ -12,7 +12,7 @@ abstract class Layer {
 	abstract public function printLayer();
     
     public function __construct($numberOfNeuronsInLayer = 2, $neuronProperties = array() ) {
-        foreach ( array_keys($this->$neuronProperties) as $optionKey  ){
+        foreach ( array_keys($this->neuronProperties) as $optionKey  ){
             if(isset($neuronProperties[$optionKey])) $this->neuronProperties[$optionKey] = $neuronProperties[$optionKey];
         }
         $this->numberOfNeuronsInLayer = $numberOfNeuronsInLayer;

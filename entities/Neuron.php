@@ -47,7 +47,7 @@ class Neuron
 
 	
     
-    protected function Random($min = 0, $max = 1){
-       return $min + rand($min,$max) / getrandmax() * ($max - $min);
+    protected function Random(){
+        return (float)rand()/(float)getrandmax();
     }
 }
